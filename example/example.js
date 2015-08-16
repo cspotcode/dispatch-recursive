@@ -35,8 +35,12 @@ function reverseObjectProperties(target, rev) {
   return undefined;
 }
 
+// If the target hasn't been caught by any reverse commands
+// it will fall through to this function which does nothing
+// but return the original value passed in.
+// This is us exploiting the command interface to provide default
+// fall through behavior in the dispatch chain.
 function irreversible(target) {
-  console.log(target, 'irreversible');
   return target;
 }
 
@@ -47,7 +51,7 @@ var rev = dispatch(
   irreversible
 );
 
-rev(42); // 42 'irreversible'
+console.log(rev(42)); // 42
 
 console.log(rev('abc')); // 'cba'
 
