@@ -6,6 +6,13 @@ var isString = require('lodash/lang/isString');
 var mapValues = require('lodash/object/mapValues');
 var dispatch = require('../es5');
 
+var rev = dispatch(
+  reverseString,
+  reverseArray,
+  reverseObjectProperties,
+  irreversible
+);
+
 function reverseString(target) {
   if (isString(target)) {
     return target.split('').reverse().join('');
@@ -35,7 +42,7 @@ function reverseObjectProperties(target, rev) {
   return undefined;
 }
 
-// If the target hasn't been caught by any reverse commands
+// If the target hasn't been caught by any rev commands
 // it will fall through to this function which does nothing
 // but return the original value passed in.
 // This is us exploiting the command interface to provide default
@@ -43,13 +50,6 @@ function reverseObjectProperties(target, rev) {
 function irreversible(target) {
   return target;
 }
-
-var rev = dispatch(
-  reverseString,
-  reverseArray,
-  reverseObjectProperties,
-  irreversible
-);
 
 console.log(rev(42)); // 42
 

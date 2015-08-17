@@ -8,9 +8,9 @@
 $ npm install --save dispatch-recursive
 ```
 
-## What is Recursive Dispatch
+## What is Dispatch?
 
-This module is a function which returns a function which loops through a list of "command" functions, and calls
+This module provides a way to construct a function which loops through a list of "command" functions, and calls
 each with a "target" value until one of the commands returns a value other than `undefined`.
 The command functions are polymorphic and adhere to the same interface. The point of dispatch
 is to simplify delegating to concrete command implementations.
@@ -32,6 +32,9 @@ Published by O'reilly Media (2013-06-01)
 
 ## Usage
 
+This example shows how you could use dispatch to construct a `rev` function. The behavior of `rev`
+changes depending on what type of object it is given.
+
 ```javascript
 'use strict';
 
@@ -40,6 +43,13 @@ var isPlainObject = require('lodash/lang/isPlainObject');
 var isString = require('lodash/lang/isString');
 var mapValues = require('lodash/object/mapValues');
 var dispatch = require('../es5');
+
+var rev = dispatch(
+  reverseString,
+  reverseArray,
+  reverseObjectProperties,
+  irreversible
+);
 
 function reverseString(target) {
   if (isString(target)) {
@@ -70,7 +80,7 @@ function reverseObjectProperties(target, rev) {
   return undefined;
 }
 
-// If the target hasn't been caught by any reverse commands
+// If the target hasn't been caught by any rev commands
 // it will fall through to this function which does nothing
 // but return the original value passed in.
 // This is us exploiting the command interface to provide default
@@ -78,13 +88,6 @@ function reverseObjectProperties(target, rev) {
 function irreversible(target) {
   return target;
 }
-
-var rev = dispatch(
-  reverseString,
-  reverseArray,
-  reverseObjectProperties,
-  irreversible
-);
 
 console.log(rev(42)); // 42
 
