@@ -5,8 +5,7 @@ import isUndefined from 'lodash/lang/isUndefined';
  * looking for one to handle the target and return a value. The commands adhere
  * to an interface of (target, fn) where the returned dispatch fn is passed
  * along to each command, where it can be used by the command. If the target
- * cannot be handled by a command the command returns undefined. If none of the
- * supplied commands handle the target, an error is thrown.
+ * cannot be handled by a command the command returns undefined.
  *
  * @param commands
  * @returns {Function}

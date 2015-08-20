@@ -3,7 +3,7 @@ import noop from 'lodash/utility/noop';
 import {spy, stub} from 'sinon';
 import dispatch from '../index';
 
-describe('dispatch', () => {
+describe('dispatch-recursive', () => {
   it('should return a function which loops commands until one returns', () => {
     const myCmd = stub().returnsArg(0);
     const uncalledCmd = spy();

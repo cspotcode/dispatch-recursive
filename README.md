@@ -19,6 +19,9 @@ The reason this is called "recursive dispatch" is because the contract of each c
 `(target, fn)` where `fn` is the function returned by dispatch. This allows each command to apply the dispatch
 chain to sub properties of the target.
 
+There is also a similar module for performing dispatch non recursively, which forwards all arguments given to the
+resultant function to be forwarded to each command called [dispatch-fn](https://github.com/CascadeEnergy/dispatch-fn).
+
 In addition, we can exploit the contract of dispatch commands to compose a terminating 
 function that provides some default behavior by always returning a value or one that always
 throws an exception.
