@@ -1,10 +1,10 @@
 'use strict';
 
-var isArray = require('lodash/lang/isArray');
-var isPlainObject = require('lodash/lang/isPlainObject');
-var isString = require('lodash/lang/isString');
-var mapValues = require('lodash/object/mapValues');
-var dispatch = require('../es5');
+var isArray = require('lodash/isArray');
+var isPlainObject = require('lodash/isPlainObject');
+var isString = require('lodash/isString');
+var mapValues = require('lodash/mapValues');
+var dispatch = require('..');
 
 var rev = dispatch(
   reverseString,
