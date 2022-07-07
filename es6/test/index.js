@@ -1,5 +1,5 @@
 import assert from 'assert';
-import noop from 'lodash/utility/noop';
+import noop from 'lodash/noop';
 import {spy, stub} from 'sinon';
 import dispatch from '../index';
 

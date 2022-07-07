@@ -8,7 +8,7 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _lodashLangIsUndefined = require('lodash/lang/isUndefined');
+var _lodashLangIsUndefined = require('lodash/isUndefined');
 
 var _lodashLangIsUndefined2 = _interopRequireDefault(_lodashLangIsUndefined);
 

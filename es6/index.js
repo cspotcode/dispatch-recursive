@@ -1,4 +1,4 @@
-import isUndefined from 'lodash/lang/isUndefined';
+import isUndefined from 'lodash/isUndefined';
 
 /**
  * Recursive dispatch, returns a function which iterates a series of commands
